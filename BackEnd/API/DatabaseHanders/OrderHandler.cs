@@ -11,7 +11,7 @@ namespace Backend.DatabaseHandlers
 {
     public class OrderHandler : DatabaseHandler
     {
-        public static IEnumerable<Order> GetOrder()
+        public static IEnumerable<Order> GetOrderProduct()
         {
             List<Order> OrderList = new List<Order>();
             var conn = "workstation id=ChallengeDB.mssql.somee.com;packet size=4096;user id=DionFinnerty_SQLLogin_2;pwd=q7y2v767uo;data source=ChallengeDB.mssql.somee.com;persist security info=False;initial catalog=ChallengeDB; TrustServerCertificate = True;";
@@ -61,5 +61,35 @@ namespace Backend.DatabaseHandlers
             }
             return OrderList;
         }
+
+        public static string OrderPost(Order order)
+        {
+           var conn = "workstation id=ChallengeDB.mssql.somee.com;packet size=4096;user id=DionFinnerty_SQLLogin_2;pwd=q7y2v767uo;data source=ChallengeDB.mssql.somee.com;persist security info=False;initial catalog=ChallengeDB; TrustServerCertificate = True;";
+            using (SqlConnection Connection = new SqlConnection(conn))
+            {
+                Connection.Open();
+                using (SqlCommand Command = new SqlCommand("OrderPost", Connection))
+                {
+                    Command.CommandType = System.Data.CommandType.StoredProcedure;
+                    Command.Parameters.AddWithValue("@postOrderDate", order.OrderDate);
+                    Command.Parameters.AddWithValue("@postCustID", order.CustID);
+                    Command.Parameters.AddWithValue("@postShipMode", order.ShipMode);
+                    Command.Parameters.AddWithValue("@postQuantity", order.Quantity);
+                    Command.Parameters.AddWithValue("@postShipDate", order.ShipDate);
+
+                    int counter = Command.ExecuteNonQuery();
+                    Connection.Close();
+                    if (counter >= 1)
+                    {
+                        return "post successful";
+                    }
+                    else{
+                        return "failed";
+                    }
+                }
+            }
+        }
+
+        
     }
 }

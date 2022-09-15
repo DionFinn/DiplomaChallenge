@@ -15,12 +15,17 @@ namespace Controllers
     public class OrderController : ControllerBase
     {
         [HttpGet]
-        [Route("/Order")]
+        [Route("/Order/Procedure")]
         public IEnumerable<Order> Get()
         {
-            return OrderHandler.GetOrder();
+            return OrderHandler.GetOrderProduct();
         }
 
-        []
+        [HttpPost]
+        [Route("/Order")]
+        public void Post([FromBody] Order order)
+        {
+            OrderHandler.OrderPost(order);
+        }
     }
 }
