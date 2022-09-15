@@ -13,3 +13,15 @@ namespace Classes
     }
     
 }
+
+    // CustID NVARCHAR(100),
+    // FullName NVARCHAR(100),
+    // SegID int,
+    // Country NVARCHAR(100),
+    // City NVARCHAR(100),
+    // [State] NVARCHAR(100),
+    // PostCode int,
+    // Region NVARCHAR(100),
+    // PRIMARY KEY (CustID),
+    // FOREIGN KEY (SegID) REFERENCES Segment,
+    // FOREIGN KEY (Region) REFERENCES Region 
