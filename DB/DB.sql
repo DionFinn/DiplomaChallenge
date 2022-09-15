@@ -123,6 +123,7 @@ select * from Segment
 select * from Category
 
 
+
 -------------------
 --Stored Procs 
 
@@ -131,6 +132,7 @@ if object_id('OrderPost') is not NULL
 drop PROCEDURE OrderPost
 go 
 create procedure OrderPost
+    
     @postOrderDate NVARCHAR(100),
     @postCustID NVARCHAR(100),
     @postShipMode NVARCHAR(100),
@@ -147,3 +149,9 @@ end CATCH
 end
 -------------------
 
+    -- OrderDate NVARCHAR(100),
+    -- CustID NVARCHAR(100),
+    -- ShipMode NVARCHAR(100),
+    -- ProdID NVARCHAR(100),
+    -- Quantity int,
+    -- ShipDate NVARCHAR(100),

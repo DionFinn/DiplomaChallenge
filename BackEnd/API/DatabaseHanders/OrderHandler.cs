@@ -11,6 +11,8 @@ namespace Backend.DatabaseHandlers
 {
     public class OrderHandler : DatabaseHandler
     {
+       
+
         public static IEnumerable<Order> GetOrderProduct()
         {
             List<Order> OrderList = new List<Order>();
@@ -60,6 +62,17 @@ namespace Backend.DatabaseHandlers
 
             }
             return OrderList;
+        }
+        
+
+        public static float Total(Order order)
+        {
+            return order.Total(order.Quantity, (float)order.Prod.UnitPrice);
+        }
+
+        public static float GST(Order order)
+        {
+            return order.GST(order.Quantity, (float)order.Prod.UnitPrice);
         }
 
         

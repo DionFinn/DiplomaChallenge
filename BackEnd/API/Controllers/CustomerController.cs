@@ -11,10 +11,12 @@ using Backend.DatabaseHandlers;
 namespace Controllers
 {
     [ApiController]
+    [EnableCors]
     [Route("[controller]")]
     public class CustomerController : ControllerBase
     {
         [HttpGet]
+        [EnableCors]
         [Route("/Customer")]
         public IEnumerable<Customer> Get()
         {

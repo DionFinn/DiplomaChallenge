@@ -15,13 +15,31 @@ namespace Controllers
     public class OrderController : ControllerBase
     {
         [HttpGet]
+        [EnableCors]
         [Route("/Order")]
         public IEnumerable<Order> Get()
         {
             return OrderHandler.GetOrderProduct();
         }
+        
+        [HttpGet]
+        [EnableCors]
+        [Route("/Order/gst")]
+        public float GST([FromBody] Order order)
+        {
+            return OrderHandler.GST(order);
+        }
+
+        [HttpGet]
+        [EnableCors]
+        [Route("/Order/total")]
+        public float Total([FromBody] Order order)
+        {
+            return OrderHandler.Total(order);
+        }
 
         [HttpPost]
+        [EnableCors]
         [Route("/Order")]
         public void Post([FromBody] Order order)
         {
@@ -29,6 +47,7 @@ namespace Controllers
         }
         
         [HttpDelete]
+        [EnableCors]
         [Route("/Order")]
         public float DeleteOrder([FromBody] Order order)
         {
@@ -36,6 +55,7 @@ namespace Controllers
         }
 
         [HttpPut]
+        [EnableCors]
         [Route("/Order")]
         public float PutOrder([FromBody] Order order)
         {

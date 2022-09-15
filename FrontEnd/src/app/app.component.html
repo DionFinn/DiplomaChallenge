@@ -1,0 +1,91 @@
+<h1 class="Title">Diploma Challenge</h1>
+
+<div class = "main-container">
+
+  <h2>Create order</h2>
+  Customer:
+
+  <select [(ngModel)]="selectedCustomer">
+    <option  *ngFor="let customer of Customers"
+    [ngValue]="customer">
+    {{customer.fullName}}
+  </option>
+  </select>
+  
+  Product:
+
+  <select [(ngModel)]="selectedProduct">
+    <option *ngFor="let p of Products" 
+    [ngValue]="p">
+    {{p.description}}
+  </option>
+  </select>
+  
+
+  Quantity:
+  <input type="number" [(ngModel)]="selectedQty">
+  
+
+  Shipping:
+  <select [(ngModel)]="selectedShipMode">
+    <option value="Second Class">Second Class</option>
+    <option value="Standard Class">Standard Class</option>
+    <option value="First Class">First Class</option>
+    <option value="Overnight Express">Overnight Express</option>
+  </select>
+  
+  <button (click)="addOrder()">Create Order</button>
+  <br>
+  <hr>
+
+</div>
+<div>
+  <h2>Delete selected Order</h2>
+  <br>
+  <select [(ngModel)]="DeleteSelectedOrder">
+    <option *ngFor="let o of Orders" 
+    [ngValue]="o">
+    QTY: {{o.quantity}},
+    PRODUCT ID: {{o.prod.prodID}}, 
+    CUSTOMER ID: {{o.custID}}
+  </option>
+  </select>
+    <button (click)="deleteOrder()">Delete Order</button>
+  <hr>
+</div>
+
+<div>
+  <h2>Select Edit Order</h2>
+  Orders List
+  <select [(ngModel)]="EditSelectedOrder" [value]="Orders[0]" (change)="changedEdit()">
+    <option *ngFor="let o of Orders" [ngValue]="o">{{o.prod.description}} {{o.quantity}}
+  </option>
+  </select>
+
+  <h2 class="title">insert Details</h2>
+  Customer:
+  <select [(ngModel)]="editedOrder.custID">
+    <br>
+    <option  *ngFor="let customer of Customers" 
+    [ngValue]="customer.custID">
+    {{customer.fullName}} + {{customer.custID}}</option>
+  </select>
+  Product:
+  <select [(ngModel)]="editedOrder.prod">
+    <br>
+    <option *ngFor="let product of Products" 
+    [ngValue]="product">
+    {{product.description}}</option>
+  </select>
+  Quantity or Product:
+  
+  <input type="number" [(ngModel)]="editedOrder.quantity">
+  Shipping Mode:
+  <select [(ngModel)]="editedOrder.shipMode">
+    <option value="Second Class">Second Class</option>
+    <option value="Standard Class">Standard Class</option>
+    <option value="First Class">First Class</option>
+    <option value="Overnight Express">Overnight Express</option>
+  </select>
+  <button (click)="editOrder()">Edit</button>
+</div>
