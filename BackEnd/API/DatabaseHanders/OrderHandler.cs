@@ -62,6 +62,32 @@ namespace Backend.DatabaseHandlers
             return OrderList;
         }
 
+        
+        public static int PutOrder(Order order)
+        {
+            var conn = "workstation id=ChallengeDB.mssql.somee.com;packet size=4096;user id=DionFinnerty_SQLLogin_2;pwd=q7y2v767uo;data source=ChallengeDB.mssql.somee.com;persist security info=False;initial catalog=ChallengeDB; TrustServerCertificate = True;";
+            using (SqlConnection Connection = new SqlConnection(conn))
+            {
+                Connection.Open();
+                using (SqlCommand command = new SqlCommand("INSERT INTO [Order] VALUES (@OrderDate, @CustID, @ShipMode, @ProdID, @Qty, @ShipDate )", Connection))
+                {
+                    
+                    command.Parameters.AddWithValue("@OrderDate", order.OrderDate);
+                    command.Parameters.AddWithValue("@CustID", order.CustID);
+                    command.Parameters.AddWithValue("@ShipMode", order.ShipMode);
+                    command.Parameters.AddWithValue("@ProdID", order.Prod.ProdID);
+                    command.Parameters.AddWithValue("@Qty", order.Quantity);
+                    command.Parameters.AddWithValue("@ShipDate", order.ShipDate);
+ 
+                    int rowsAffected = command.ExecuteNonQuery();
+                    Connection.Close();
+                    return rowsAffected;
+                }
+   
+            }
+
+        }
+
         public static string OrderPost(Order order)
         {
            var conn = "workstation id=ChallengeDB.mssql.somee.com;packet size=4096;user id=DionFinnerty_SQLLogin_2;pwd=q7y2v767uo;data source=ChallengeDB.mssql.somee.com;persist security info=False;initial catalog=ChallengeDB; TrustServerCertificate = True;";
@@ -90,6 +116,23 @@ namespace Backend.DatabaseHandlers
             }
         }
 
-        
+          public static int DeleteOrder(Order order)
+        {
+            var conn = "workstation id=ChallengeDB.mssql.somee.com;packet size=4096;user id=DionFinnerty_SQLLogin_2;pwd=q7y2v767uo;data source=ChallengeDB.mssql.somee.com;persist security info=False;initial catalog=ChallengeDB; TrustServerCertificate = True;";
+            using (SqlConnection Connection = new SqlConnection(conn))
+            {
+                Connection.Open();
+                using (SqlCommand command = new SqlCommand("DELETE FROM [ORDER] WHERE OrderDate = @OrderDate AND ProdID = @ProdID AND CustID = @CustID", Connection))
+                {
+                    command.Parameters.AddWithValue("@OrderDate", order.OrderDate);
+                    command.Parameters.AddWithValue("@ProdID", order.Prod.ProdID);
+                    command.Parameters.AddWithValue("@CustID", order.CustID);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                    Connection.Close();
+                    return rowsAffected;
+                }
+            }
+        }
     }
 }

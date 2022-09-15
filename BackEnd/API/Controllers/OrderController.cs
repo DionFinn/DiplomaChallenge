@@ -15,7 +15,7 @@ namespace Controllers
     public class OrderController : ControllerBase
     {
         [HttpGet]
-        [Route("/Order/Procedure")]
+        [Route("/Order")]
         public IEnumerable<Order> Get()
         {
             return OrderHandler.GetOrderProduct();
@@ -27,5 +27,23 @@ namespace Controllers
         {
             OrderHandler.OrderPost(order);
         }
+        
+        [HttpDelete]
+        [Route("/Order")]
+        public float DeleteOrder([FromBody] Order order)
+        {
+            return OrderHandler.DeleteOrder(order);
+        }
+
+        [HttpPut]
+        [Route("/Order")]
+        public float PutOrder([FromBody] Order order)
+        {
+            return OrderHandler.PutOrder(order);
+        }
+
+
+        
+
     }
 }
