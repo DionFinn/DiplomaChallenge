@@ -123,4 +123,27 @@ select * from Segment
 select * from Category
 
 
+-------------------
+--Stored Procs 
+
+go  
+if object_id('OrderPost') is not NULL
+drop PROCEDURE OrderPost
+go 
+create procedure OrderPost
+    @postOrderDate NVARCHAR(100),
+    @postCustID NVARCHAR(100),
+    @postShipMode NVARCHAR(100),
+    @postQuantity int,
+    @postShipDate NVARCHAR(100)
+as 
+begin  
+    begin try 
+    insert into [Order] (OrderDate, CustID,  ShipMode, Quantity, ShipDate)
+    values (@postOrderDate, @postCustID, @postShipMode, @postQuantity, @postShipDate)
+end try 
+begin catch 
+end CATCH
+end
+-------------------
 
