@@ -1,0 +1,5 @@
+/Users/dionfinnerty/Documents/Swinburne-Year-2/Sem2/Programming/Challenge/DiplomaChallenge/BackEnd/API/Testing/obj/Debug/net5.0/Testing.csproj.AssemblyReference.cache
+/Users/dionfinnerty/Documents/Swinburne-Year-2/Sem2/Programming/Challenge/DiplomaChallenge/BackEnd/API/Testing/obj/Debug/net5.0/Testing.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dionfinnerty/Documents/Swinburne-Year-2/Sem2/Programming/Challenge/DiplomaChallenge/BackEnd/API/Testing/obj/Debug/net5.0/Testing.AssemblyInfoInputs.cache
+/Users/dionfinnerty/Documents/Swinburne-Year-2/Sem2/Programming/Challenge/DiplomaChallenge/BackEnd/API/Testing/obj/Debug/net5.0/Testing.AssemblyInfo.cs
+/Users/dionfinnerty/Documents/Swinburne-Year-2/Sem2/Programming/Challenge/DiplomaChallenge/BackEnd/API/Testing/obj/Debug/net5.0/Testing.csproj.CoreCompileInputs.cache
