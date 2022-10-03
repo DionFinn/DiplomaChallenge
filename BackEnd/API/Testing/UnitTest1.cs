@@ -1,13 +1,12 @@
 using System;
-using Classes; 
 using Xunit;
-
-
+using Classes; 
 
 namespace Testing
 {
-    public class test
+    public class UnitTest1
     {
+        
         [Theory]
         [InlineData(5,5)]
         [InlineData(1,5)]
@@ -15,12 +14,12 @@ namespace Testing
         [InlineData(5,0)]
         [InlineData(-5,5)]
         [InlineData(5,-5)]
-        public void TestingForTotal(int qty, int cost)
+        public void TestTotal(int qty, int cost)
         {
-            var order = new Order().total(qty, cost);
+            var order = new Order().total(qty,cost);
             var result = qty * cost;
 
-            Assert.Equal(order, result);
+            Assert.Equal(order,result);
         }
 
         [Theory]
@@ -30,12 +29,12 @@ namespace Testing
         [InlineData(5,0)]
         [InlineData(-5,5)]
         [InlineData(5,-5)]
-        public void TestingForGST(int qty, float cost)
+        public void TestGST(int qty, float cost)
         {
-            var order = new Order().GST(qty, cost);
-            var GSTresult = (qty * cost)/10;
+            var order = new Order().GST(qty,cost);
+            var result = (qty * cost)/10;
 
-            Assert.Equal(order,GSTresult);
+            Assert.Equal(order,result);
         }
     }
 }
