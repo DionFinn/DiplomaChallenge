@@ -1,6 +1,6 @@
 namespace Classes 
 {
-    public class Order
+    public static class Order
     {
         public Product Prod { get; set; }
         public string OrderDate { get; set; }
@@ -9,12 +9,12 @@ namespace Classes
         public string CustID { get; set; }
         public string ShipMode { get; set; }
 
-        public float Total(int Quantity, float price)
+        public float getTotal(int Quantity, float price)
         {
             return Quantity * (int)price;
         }
 
-        public float GST(int Quantity, float price)
+        public float getGST(int Quantity, float price)
         {
             return Total(Quantity, price) / 10;
         }

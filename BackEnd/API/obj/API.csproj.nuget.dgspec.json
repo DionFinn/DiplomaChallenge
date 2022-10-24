@@ -14,7 +14,7 @@
         "outputPath": "/Users/dionfinnerty/Documents/Swinburne-Year-2/Sem2/Programming/Challenge/DiplomaChallenge/BackEnd/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/dionfinnerty/.config/NuGet/NuGet.Config"
+          "/Users/dionfinnerty/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
